@@ -1,25 +1,51 @@
 import React from 'react';
+import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
+import Home from './pages/home'
+import Mallorca from './pages/mallorca'
+import Miami from './pages/miami'
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+
+function App({history}) {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo" />
+          <ul>
+            <li>
+              <Link to="/mallorca/something/something">Mallorca</Link>
+            </li>
+            <li>
+              <Link to={
+                {
+                  pathname: "/miami",
+                  state: {
+                    from: "root"
+                  }
+                }
+              }>Miami</Link>
+            </li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+          </ul>
+          <div>
+            <Switch>
+              <Route exact path="/mallorca/:city/:neighborhood" component={Mallorca}/>
+              <Route exact path="/miami" component={Miami}/>
+              <Route exact path="/" component={Home}/>
+            </Switch>
+          </div>
+        </header>
+        <body>
+          <div>
+
+          </div>
+        </body>
+      </div>
+    </Router>
   );
 }
 
