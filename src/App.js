@@ -1,13 +1,8 @@
 import React from 'react';
-import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom"
-import Home from './pages/home'
-import Mallorca from './pages/mallorca'
-import Miami from './pages/miami'
 import logo from './logo.svg';
 import './App.css';
 
-
-function App({history}) {
+function App() {
   return (
     <Router>
       <div className="App">
@@ -39,11 +34,6 @@ function App({history}) {
             </Switch>
           </div>
         </header>
-        <body>
-          <div>
-
-          </div>
-        </body>
       </div>
     </Router>
   );
